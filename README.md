@@ -1,3 +1,9 @@
+This project includes:
+* PHP 7
+* Nginx
+* MariaDb
+* Symfony 4
+
 Make sure you have installed docker & docker-compose (v.2)
 
 Make symbolic link for code (project may be placed anywhere, it's just an example):
