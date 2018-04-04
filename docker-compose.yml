@@ -1,0 +1,37 @@
+version: '2' # update to 3-rd v
+services:
+    code:
+        image: busybox
+        command: /bin/true
+        container_name: code_container
+        volumes:
+            - ./code:/var/www
+    php-fpm:
+        build: ./php-fpm
+        container_name: php-fpm_container
+        volumes_from:
+            - code
+        volumes:
+            - ~/.composer:/root/.composer
+            - ~/.ssh/id_rsa:/root/.ssh/id_rsa:ro
+            - ./logs/app:/var/log/default
+        links:
+            - mariadb
+    nginx:
+        build: ./nginx
+        container_name: nginx_container
+        ports:
+            - 80:80
+        links:
+            - php-fpm
+        volumes_from:
+            - code
+        volumes:
+            - ./logs/nginx:/var/log/nginx
+    mariadb:
+        build: ./mariadb
+        container_name: mariadb_container
+        volumes:
+            - ./data/mysql:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: root
