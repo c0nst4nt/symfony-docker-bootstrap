@@ -4,26 +4,20 @@ This project includes:
 * MariaDb
 * Symfony 4
 
-Make sure you have installed docker & docker-compose (v.2)
+Make sure you have installed docker & docker-compose
 
-Make symbolic link for code (project may be placed anywhere, it's just an example):
-
-```
-ln -s ./project/ ./code
-```
-
-In the folder with docker-compose.yml run:
+In the same folder with docker-compose.yml run:
  
 ```
 docker-compose build
 docker-compose up -d
 ```
 
-If command log didn't have errors and all containers is up 
+If command log didn't have errors and all containers are up and running 
 (to check run "docker ps"), you may open browser with "localhost" 
 domain and check output.
 
-There may be errors in output. Still don't have dependencies. 
+There will be errors in output. Still don't have dependencies. 
 To add them enter to the container and install them:
 
 ```
